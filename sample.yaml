@@ -3,8 +3,8 @@ apiVersion: v1
 metadata:
   name: example-secret
   annotations:
-    avp_path: "secret/data/devwebapp/config"
+    avp.kubernetes.io/path: "secret/data/devwebapp/config"
 type: Opaque
-data:
+stringData:
   username: <username>
   password: <password>
