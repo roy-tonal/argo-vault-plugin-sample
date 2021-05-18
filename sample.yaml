@@ -6,4 +6,5 @@ metadata:
     avp_path: "secret/data/devwebapp/config"
 type: Opaque
 stringData:
-  sample-secret: <sample>
+  username: <username>
+  password: <password>
