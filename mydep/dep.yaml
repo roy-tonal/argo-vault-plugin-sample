@@ -1,23 +1,28 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydep
+  name: helloweb
   labels:
-    app: mydep
+    app: hello
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: mydep
+      app: hello
+      tier: web
   template:
     metadata:
       labels:
-        app: mydep
+        app: hello
+        tier: web
     spec:
       containers:
-        - name: app
-          image: alpine:latest
-          imagePullPolicy: Always
-          envFrom:
+      - name: hello-app
+        image: gcr.io/google-samples/hello-app:1.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 200m
+        envFrom:
           - secretRef:
               name: example-secret
