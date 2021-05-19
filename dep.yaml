@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: mydep
+  labels:
+    app: mydep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydep
+  template:
+    metadata:
+      labels:
+        app: mydep
+    spec:
+      containers:
+        - name: app
+          image: alpine:latest
+          imagePullPolicy: Always
+          envFrom:
+          - secretRef:
+              name: example-secret
